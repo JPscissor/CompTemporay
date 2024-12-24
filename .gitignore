@@ -1,0 +1,21 @@
+# Gradle and Android temporary files
+.gradle/
+.idea/
+*.iml
+build/
+caches/
+kotlin-profile/
+local.properties
+*.lock
+
+# Gradle wrapper
+gradle/
+gradlew
+gradlew.bat
+
+# OS-specific files
+*.DS_Store
+Thumbs.db
+
+# Log files
+*.log
