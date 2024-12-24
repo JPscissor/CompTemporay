@@ -24,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,8 +52,8 @@ import ru.jpscissor.cross.ui.theme.NewPeninimFontFamily
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LogscScreen(navController: NavHostController) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("xyz@gmail.com") }
+    var password by remember { mutableStateOf("xyz123!!!") }
     var isEmailValid by remember { mutableStateOf(true) }
     var isPasswordValid by remember { mutableStateOf(true) }
 
@@ -142,6 +143,14 @@ fun LogscScreen(navController: NavHostController) {
                         )
                     }
 
+                    Text(
+                        "Восстановить",
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.End,
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+
                     Button(
                         onClick = {
                             if (isEmailValid && isPasswordValid && email.isNotEmpty() && password.isNotEmpty()) {
@@ -166,7 +175,6 @@ fun LogscScreen(navController: NavHostController) {
                 }
             }
 
-            // Текст "Вы впервые?" внизу
             Text(
                 text = "Вы впервые? Создать пользователя",
                 modifier = Modifier
@@ -209,7 +217,7 @@ fun PasswordTextField(password: String, onPasswordChange: (String) -> Unit) {
             trailingIcon = {
                 IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
                     Icon(
-                        imageVector = if (isPasswordVisible) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                        imageVector = if (isPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
                         contentDescription = if (isPasswordVisible) "Hide password" else "Show password",
                         modifier = Modifier.size(24.dp)
                     )
